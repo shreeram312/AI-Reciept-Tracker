@@ -1,3 +1,4 @@
+import { GridPattern } from "@/components/magicui/grid-pattern";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Search, Shield, Upload } from "lucide-react";
 import Link from "next/link";
@@ -5,7 +6,10 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <section className="py-20 md:py-28 bg-gradient-to-b from-blue-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <section className="py-20 md:py-28 relative">
+        <div className="absolute h-full inset-0 -z-10">
+          <GridPattern />
+        </div>
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
@@ -18,22 +22,24 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-x-4">
+            <div className="space-x-4 cursor-pointer">
               <Link href="/receipts">
-                <Button className="">
-                  Get Started <ArrowRight className="ml-2" />
+                <Button className="cursor-pointer">
+                  Get Started <ArrowRight className="ml-1" />
                 </Button>
               </Link>
 
               <Link href={"/features"}>
-                <Button variant="outline">Learn More</Button>
+                <Button className="cursor-pointer" variant="outline">
+                  Learn More
+                </Button>
               </Link>
             </div>
           </div>
         </div>
 
         <div className="mt-12 flex justify-center">
-          <div className="relative w-full max-w-3xl rounded-lg border border-gray-200 bg-white shadow-lg overflow-hidden dark:border-gray-800 dark:bg-gray-950">
+          <div className="relative w-full max-w-3xl rounded-lg">
             <div className="p-6 md:p-8">{/* <PDFDropzone /> */}</div>
           </div>
         </div>
@@ -90,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 md:py-24">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -104,7 +110,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-5xl mx-auto">
-            <div className="flex flex-col p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-800 dark:bg-gray-950">
+            <div className="flex flex-col p-6 border border-gray-700 rounded-lg shadow-sm">
               <div className="space-y-2">
                 <h3 className="text-2xl font-bold">Free</h3>
                 <p className="text-gray-500 dark:text-gray-400">
@@ -138,7 +144,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-800 dark:bg-gray-950">
+            <div className="flex flex-col p-6 border border-gray-700 rounded-lg shadow-sm">
               <div className="space-y-2">
                 <h3 className="text-2xl font-bold">Starter</h3>
                 <p className="text-gray-500 dark:text-gray-400">
@@ -172,8 +178,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="flex flex-col p-6 bg-blue-50 border border-blue-200 rounded-lg relative dark:border-blue-900 dark:bg-blue-900/20">
-              <div className="absolute -top-3 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <div className="flex flex-col p-6 border border-gray-700 rounded-xl shadow-md relative">
+              <div className="absolute -top-3 right-4 text-white px-3 py-1 rounded-full text-sm font-medium">
                 Popular
               </div>
               <div className="space-y-2">
@@ -214,9 +220,7 @@ export default function Home() {
               </ul>
               <div className="mt-6">
                 <Link href={"/manage-plan"}>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                    Choose Plan
-                  </Button>
+                  <Button className="w-full ">Choose Plan</Button>
                 </Link>
               </div>
             </div>

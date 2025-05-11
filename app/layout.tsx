@@ -4,6 +4,9 @@ import "./globals.css";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/header";
+import { ThemeProvider } from "next-themes";
+import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
+import { GridPattern } from "@/components/magicui/grid-pattern";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +36,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClerkProvider dynamic>
-          <ConvexClientProvider>
-            <main>{children}</main>
-          </ConvexClientProvider>
-        </ClerkProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClerkProvider dynamic>
+            <ConvexClientProvider>
+              <Header />
+
+              <main>{children}</main>
+            </ConvexClientProvider>
+          </ClerkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
